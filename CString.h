@@ -110,7 +110,7 @@ public:
 		if (!szInputSource) return;
 
 		long len = strlen(szInputSource);
-		if (szInputSource && len>0)
+		if (szInputSource)
 		{
 			m_str = (char*) malloc(len+1);
 			if (m_str) strcpy(m_str, szInputSource);

@@ -24,9 +24,6 @@ int main(int argc, char* argv[])
 	//
 
 	CString szSolutionName = argv[1];
-	if (!szSolutionName.Right(strlen(".vcproj")).CompareNoCase(".vcproj") &&
-		!szSolutionName.Right(strlen(".sln")).CompareNoCase(".sln"))
-		szSolutionName += ".sln";
 
 	HANDLE hFind;
 	WIN32_FIND_DATA fd;
@@ -54,6 +51,10 @@ int main(int argc, char* argv[])
 		p.process(szSolutionName);
 	}
 	else if ( szSolutionName.Right(strlen(".vcproj")).CompareNoCase(".vcproj") ) // *.vcproj passed in the cmdline
+	{
+		p.processProjectOnly(szSolutionName); // szSolutionName is not a *.sln name
+	}
+	else if ( szSolutionName.Right(strlen(".vcxproj")).CompareNoCase(".vcxproj") )
 	{
 		p.processProjectOnly(szSolutionName); // szSolutionName is not a *.sln name
 	}

@@ -419,9 +419,11 @@ class FindableArray : public CTemplateObjArray<SINGLEVALUEPARAM*>
 public:
 	CString GetValue(/*in*/char *szName, BOOL bUseCase=FALSE)
 	{
-		CString s;
+		CString s("");
 		long nSize = GetSize();
-		if (nSize==0) return s;
+
+		if (nSize==0)
+			return s;
 
 		BOOL bFound = FALSE;
 		long i=0;
